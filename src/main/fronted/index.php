@@ -35,7 +35,11 @@
                             <td><?= $pet['chip']?></td>
                             <td><?= $pet['category']?></td>
                             <td><?= $pet['born']?></td> 
-                            <td><?php echo $pet['adopt']?'<a>Adoptado</a>':'<button>Adoptar</button>'?></td>
+                            <td>
+                            <form method="POST" action="http://localhost:8080/adopt/<?= $pet['id']?>">
+                            <?php echo $pet['adopt']?'<span>Adoptado</span>':'<button type=submit>Adoptar</button>'?>
+                            </td>
+                            </form>
                         </tr>
                     <?php endforeach;?>
                 <?php endif;?>

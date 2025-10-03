@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hellin.despliegue_api_rest.entity.Pet;
 import com.hellin.despliegue_api_rest.repository.PetRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 public class PetController {
@@ -20,5 +23,10 @@ public class PetController {
     public List<Pet> hello(){
         return petRepository.findAll();
     }
-
+    @PostMapping("/adopt/{id}")
+    public Pet adopt(@RequestBody long id) {
+       Pet pet= petRepository.findById(id).get();
+       pet.setAdopt(true);
+       return petRepository.save(pet);
+    }
 }
