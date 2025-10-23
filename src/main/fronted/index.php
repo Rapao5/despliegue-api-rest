@@ -1,9 +1,9 @@
 <?php 
 
-    $url = "http://localhost:8080/list";
-    $data = file_get_contents($url);
+    $url = "http://host.docker.internal:8080/pet/list";
+    $data = @file_get_contents($url);
     //json Array
-    $pets = json_decode($data, true); 
+    $pets = json_decode($data, true) ?? [];
 
     //  var_dump($pets);
 
